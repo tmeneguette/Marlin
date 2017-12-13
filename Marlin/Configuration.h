@@ -635,7 +635,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-#define FIX_MOUNTED_PROBE
+//#define FIX_MOUNTED_PROBE
 
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
@@ -880,7 +880,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 #define MESH_BED_LEVELING
 
@@ -901,7 +901,7 @@
   // split up moves into short segments like a Delta. This follows the
   // contours of the bed more closely than edge-to-edge straight moves.
   #define SEGMENT_LEVELED_MOVES
-  #define LEVELED_SEGMENT_LENGTH 5.0 // (mm) Length of all segments (except the last one)
+  #define LEVELED_SEGMENT_LENGTH 10.0 // (mm) Length of all segments (except the last one)
 
   /**
    * Enable the G26 Mesh Validation Pattern tool.
@@ -919,7 +919,7 @@
 #if ENABLED(AUTO_BED_LEVELING_LINEAR) || ENABLED(AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 6
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Set the boundaries for probing (where the probe can reach).
@@ -942,7 +942,7 @@
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
+    #define EXTRAPOLATE_BEYOND_GRID
 
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
@@ -960,12 +960,12 @@
 
   // 3 arbitrary points to probe.
   // A simple cross-product is used to estimate the plane of the bed.
-  #define ABL_PROBE_PT_1_X 25
-  #define ABL_PROBE_PT_1_Y 152
-  #define ABL_PROBE_PT_2_X 152
-  #define ABL_PROBE_PT_2_Y 76
-  #define ABL_PROBE_PT_3_X 25
-  #define ABL_PROBE_PT_3_Y 0
+  #define ABL_PROBE_PT_1_X X_PROBE_OFFSET_FROM_EXTRUDER
+  #define ABL_PROBE_PT_1_Y Y_BED_SIZE
+  #define ABL_PROBE_PT_2_X X_BED_SIZE
+  #define ABL_PROBE_PT_2_Y ((Y_BED_SIZE) / 2)
+  #define ABL_PROBE_PT_3_X X_PROBE_OFFSET_FROM_EXTRUDER
+  #define ABL_PROBE_PT_3_Y Y_PROBE_OFFSET_FROM_EXTRUDER
 
 #elif ENABLED(AUTO_BED_LEVELING_UBL)
 
@@ -975,16 +975,16 @@
 
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 1              // Mesh inset margin on print area
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define MESH_INSET 0              // Mesh inset margin on print area
+  #define GRID_MAX_POINTS_X 7      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
-  #define UBL_PROBE_PT_1_X 26       // Probing points for 3-Point leveling of the mesh
-  #define UBL_PROBE_PT_1_Y 151
-  #define UBL_PROBE_PT_2_X 151
-  #define UBL_PROBE_PT_2_Y 76
-  #define UBL_PROBE_PT_3_X 26
-  #define UBL_PROBE_PT_3_Y 1
+  #define UBL_PROBE_PT_1_X X_PROBE_OFFSET_FROM_EXTRUDER       // Probing points for 3-Point leveling of the mesh
+  #define UBL_PROBE_PT_1_Y Y_BED_SIZE
+  #define UBL_PROBE_PT_2_X X_BED_SIZE
+  #define UBL_PROBE_PT_2_Y ((Y_BED_SIZE) / 2)
+  #define UBL_PROBE_PT_3_X X_PROBE_OFFSET_FROM_EXTRUDER
+  #define UBL_PROBE_PT_3_Y 0
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500

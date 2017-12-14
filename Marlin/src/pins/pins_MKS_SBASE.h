@@ -184,7 +184,7 @@
 //
 // Misc. Functions
 //
-#define SDSS               P0_6
+#define SDSS               P0_06
 
 /**
  *  PWMs

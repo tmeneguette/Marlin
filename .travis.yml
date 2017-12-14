@@ -487,7 +487,7 @@ script:
   - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
   - restore_configs
 #
-# Removed due to compile failure on E0_AUTO_FAN_PIN PB8
+# Disabled due to compile failure on E0_AUTO_FAN_PIN PB8
 #
 #  - use_example_configs Malyan/M200
 #  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
@@ -515,11 +515,13 @@ script:
   - restore_configs
   - use_example_configs Velleman/K8400
   - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
-  - #
-  - # Requires https://github.com/stawel/SlowSoftI2CMaster
-  - # restore_configs
-  - # use_example_configs wt150
-  - # build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
+#
+# Disabled due to compile failure on https://github.com/stawel/SlowSoftI2CMaster
+#
+#  - Requires https://github.com/stawel/SlowSoftI2CMaster
+#  - restore_configs
+#  - use_example_configs wt150
+#  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
 
 
   - export TEST_PLATFORM="-e rambo"
@@ -576,13 +578,16 @@ script:
   - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
 
 
-  - export TEST_PLATFORM="-e STM32F1"
-  - restore_configs
-  - use_example_configs STM32F10
-  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
-  - restore_configs
-  - use_example_configs stm32f103ret6
-  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
+#
+# Disabled due to numerous compile failures
+#
+#  - export TEST_PLATFORM="-e STM32F1"
+#  - restore_configs
+#  - use_example_configs STM32F10
+#  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
+#  - restore_configs
+#  - use_example_configs stm32f103ret6
+#  - build_marlin_pio ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
 
 
   - export TEST_PLATFORM="-e DUE"

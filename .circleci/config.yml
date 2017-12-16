@@ -24,9 +24,10 @@ jobs:
 
       - restore_cache:
           paths:
-          - "~/.platformio ~/Marlin/.piolibdeps"
+          - ~/.platformio
+          - ~/Marlin/.piolibdeps
           keys:
-          - v1-dependencies-{{ checksum "~/Marlin/.circleci/config.yml" }}
+          - v1-dependencies-{{ checksum "~/Marlin/platformio.ini" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -271,11 +272,12 @@ jobs:
 
             #
             # Remove temp files from dependencies tree prior to cachining
-            rm -rf ~/Marlin/.piolibdeps/tmp_*
+            rm -rf ~/Marlin/.piolibdeps/_tmp_*
 
 
       - save_cache:
           paths:
-          - "~/.platformio ~/Marlin/.piolibdeps"
-          key: v1-dependencies-{{ checksum "~/Marlin/.circleci/config.yml" }}
+          - ~/.platformio
+          - ~/Marlin/.piolibdeps
+          key: v1-dependencies-{{ checksum "~/Marlin/platformio.ini" }}
 

@@ -1681,7 +1681,7 @@
 // MakerLab Mini Panel with graphic
 // controller and SD support - http://reprap.org/wiki/Mini_panel
 //
-//#define MINIPANEL
+#define MINIPANEL
 
 //
 // MaKr3d Makr-Panel with graphic controller and SD support.

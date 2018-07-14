@@ -980,7 +980,9 @@ TaskFunction_t Marlin_main_loop() {
                           // In the mean time...  settings.load() is run at the start of the Marlin_main_loop()
                           // task.  This approach seems to work around what ever the problem is.
 
+#if ENABLED(MAX7219_DEBUG)
   Max7219_Do_Cmd(LED_CLEAR_MATRIX, 0, 0, 0);
+#endif
 
   for (;;) {
 
@@ -1027,7 +1029,11 @@ TaskFunction_t Marlin_main_loop() {
 
 TaskFunction_t Marlin_idle() {
   for (;;) {
-    Max7219_Do_Cmd(LED_SET_ROW, 0, 6, (uint8_t) (zzz++>>3));
+
+    #if ENABLED(MAX7219_DEBUG)
+      Max7219_Do_Cmd(LED_SET_ROW, 0, 6, (uint8_t) (zzz++>>3));
+    #endif
+    
     vTaskDelay(3);
   }
 }
